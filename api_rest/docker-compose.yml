@@ -1,0 +1,34 @@
+version: '3'
+
+
+#  Quando subimos esse servidor precisamos usar o comando
+# docker-compose exec postgres sh
+#  Desta forma entraremos na máquina e usaremos o comando 
+# hostname -i 
+# Para receber o ip de conexão que precisamos colocar no Banco 
+# Ou podemos utilizar o comando 
+# docker inspect IDDoContainer | grep IPAddress
+# Assim vamos receber o ip do mesmo jeito sem ter que acessar a máquina 
+
+services:
+  postgres:
+    image: "postgres:latest"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root      
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./migration/docker-database-initial.sql:/docker-entrypoint-initdb.d/docker-database-initial.sql   
+
+# Conexão para mexermos diretamente no postgres pela web
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "felipe@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "123456"
+    ports:
+      - "54321:80"
+    depends_on:
+      - postgres

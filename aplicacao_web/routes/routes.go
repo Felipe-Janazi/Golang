@@ -14,3 +14,5 @@ func CarregaRotas() {
 	http.HandleFunc("/edit", controllers.Edit)
 	http.HandleFunc("/update", controllers.Update)
 }
+
+// localhost:8000/new

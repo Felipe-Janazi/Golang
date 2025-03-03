@@ -51,6 +51,7 @@ func BuscaTodosOsProdutos () []Produto{
 		produtos = append(produtos, p)
 
 	}
+	
 	defer db.Close()
 	return produtos
 }
