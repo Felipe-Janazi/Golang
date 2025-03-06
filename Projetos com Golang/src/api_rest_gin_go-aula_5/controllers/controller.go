@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/guilhermeonrails/api-go-gin/database"
-	"github.com/guilhermeonrails/api-go-gin/models"
+	"api_rest_gin/database"
+	"api_rest_gin/models"
 )
 
 func ExibeTodosAlunos(c *gin.Context) {
@@ -24,6 +24,12 @@ func Saudacao(c *gin.Context) {
 func CriaNovoAluno(c *gin.Context) {
 	var aluno models.Aluno
 	if err := c.ShouldBindJSON(&aluno); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error()})
+		return
+	}
+
+	if err := models.ValidaDadosDeAluno(&aluno); err != nil{
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": err.Error()})
 		return
@@ -59,6 +65,12 @@ func EditaAluno(c *gin.Context) {
 	database.DB.First(&aluno, id)
 
 	if err := c.ShouldBindJSON(&aluno); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error()})
+		return
+	}
+
+	if err := models.ValidaDadosDeAluno(&aluno); err != nil{
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": err.Error()})
 		return
