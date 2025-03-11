@@ -1,8 +1,8 @@
-Golang Projects & Exercises
+# Golang Projects & Exercises
 
 Bem-vindo ao repositório Golang Projects & Exercises! Aqui você encontrará pequenos projetos desenvolvidos em Go e listas de exercícios para praticar a linguagem.
 
-📌 Sobre o Repositório
+# 📌 Sobre o Repositório
 
 Este repositório tem o objetivo de armazenar:
 
