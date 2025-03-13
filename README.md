@@ -4,9 +4,9 @@ Bem-vindo ao repositório Golang Projects & Exercises! Aqui você encontrará pe
 
 ## 👨🏻‍💻 Tecnologias utilizadas
 
-- Golang para criação da API Rest
-- GORM para conexão com Postgress
-- GIN para simplificação de API
+- Golang - Usado para criação da API Rest
+- GORM - Usado para conexão com Postgress
+- GIN - Usado para simplificação de API
 
 ## 📌 Sobre o Repositório
 
