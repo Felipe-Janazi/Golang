@@ -1,25 +1,58 @@
 package main
 
-import (
-	"errors"
-	"fmt"
-)
+import "fmt"
+
+type Carro struct {
+	Nome string
+}
+
+func(c Carro) andar() {
+	fmt.Println(c.Nome, "andou")
+}
 
 func main() {
-	
-	res, _ := Soma(10, 10)
 
-	fmt.Println(res)
-}
-
-func Soma(x int, y int) (int, error){
-	res := x + y
-
-	if res > 10 {
-		return 0, errors.New("Total maior que 10")
+	carro := Carro{
+		Nome: "Azera",
 	}
 
-	return res, nil
+	carro.andar()
+
+	// Uma função que devolve uma função que devolve um inteiro
+	resultado := func(x ...int)  func() int {
+
+		res := 0
+
+		// Um looping de valores V, dentro do range informado de X
+		// Sendo um array, assim somando todos os seus valores
+		for _, v := range x {
+			res += v
+		}
+		return func() int {
+			return res + res
+		}
+	}
+
+	// Chamado da função, devolvendo uma função e devolvendo um inteiro
+	fmt.Println(resultado(10,10,10,10,10)())
 }
 
+// Retorno por nome da variáveis
+func Soma(x int, y int) (result int) {
 
+	result = x + y
+	return
+}
+
+// Soma de um array de inteiros sendo passados
+func somaTudo(x ...int) int {
+	resultado := 0
+
+	// Um looping de valores V, dentro do range informado de X
+	// Sendo um array, assim somando todos os seus valores
+	for _, v := range x {
+		resultado += v
+	}
+
+	return resultado
+}
