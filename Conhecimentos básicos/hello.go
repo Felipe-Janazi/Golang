@@ -142,7 +142,7 @@ func lerSitesDoArquivo() []string {
 	for {
 		linha, err := leitor.ReadString('\n')
 
-		// Usamos a bibliotexa strings para tirar o quebra linha e espaços do final da linha
+		// Usamos a biblioteca strings para tirar o quebra linha e espaços do final da linha
 		linha = strings.TrimSpace(linha)
 
 		// Colocando a linha dentro do slice
